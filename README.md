@@ -2,7 +2,21 @@
 
 
 ## Contents
+1) [Running The App](#running-the-app)
+   - [Using Cargo Maven](#run-using-cargo-maven-plugin)
+   - [Using Tomcat Server](#run-using-netbeans-embedded-tomcat-server)
 
+2) [Requirements](#requirements)
+ 
+3) [Project Features](#project-features)
+
+4) [Use Cases](#use-cases)
+   - [Admin](#admin)
+   - [User](#user)
+
+5) [Testing](#testing)
+   - [User](#user-tests)
+   - [Admin](#admin-tests)
 
 ## Running the app
 You can run the app using the stand alone spring boot maven plugin:
@@ -18,7 +32,7 @@ mvn spring-boot:run
 ```
 the project will be served at http://localhost:8080/index.html
 
-### To run using stand alone cargo maven plugin
+### Run using cargo maven plugin
 
 You can also use the cargo plugin
 ```
@@ -27,7 +41,7 @@ mvn cargo:run
 then navigate to http://localhost:8080/shoppingCartApplication/
 
 
-### To run the project using  in Netbeans embedded Tomcat server
+### Run using Netbeans embedded Tomcat server
 
 If you right click on the webfacade-example1 project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
 
