@@ -124,7 +124,7 @@ public class MVCController {
         model.addAttribute("selectedPage", "about");
         return "about";
     }
-
+    
     @RequestMapping(value = "/contact", method = {RequestMethod.GET, RequestMethod.POST})
     public String contactCart(Model model, HttpSession session) {
 
@@ -137,6 +137,68 @@ public class MVCController {
         return "contact";
     }
 
+    
+    @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
+    public String OrdersList(Model model, HttpSession session) {
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+        model.addAttribute("selectedPage", "orders");
+        return "orders";
+    }
+    
+    @RequestMapping(value = "/checkout", method = {RequestMethod.GET, RequestMethod.POST})
+    public String viewCheckout(Model model, HttpSession session) {
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+        model.addAttribute("selectedPage", "orders");
+        return "checkout";
+    }
+    
+    
+    @RequestMapping(value = "/catalogue", method = {RequestMethod.GET, RequestMethod.POST})
+    public String catalogList(Model model, HttpSession session) {
+
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+     //   List<ShoppingItem> availableItems= new ArrayList();
+     //   ShoppingItem item = new ShoppingItem();
+     //   item.setName("item");
+     //   availableItems.add(item);
+     
+        List<ShoppingItem> availableItems = shoppingService.getAvailableItems();
+                
+        model.addAttribute("availableItems", availableItems);
+        
+        model.addAttribute("selectedPage", "admin");
+        return "catalogue";
+    }
+    
+    @RequestMapping(value = "/basket", method ={RequestMethod.GET, RequestMethod.POST})
+    public String viewBasket(@RequestParam(name = "action", required = false) String action,
+        @RequestParam(name = "item.name", required = false) String itemName,
+        @RequestParam(name= "item.uuid", required = false) String itemUuid, 
+        Model model,
+        HttpSession session
+    ) {
+        
+        User user = getSessionUser(session);
+        model.addAttribute("user", user);
+        
+        model.addAttribute("selectedPage", "basket");
+        
+        String message = "";
+        String errorMessage = "";
+        
+        List<ShoppingItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
+        Double shoppingcartTotal = shoppingCart.getTotal();
+        
+        model.addAttribute("shoppingCartItems", shoppingCartItems);
+        model.addAttribute("shoppingCartTotal", shoppingcartTotal);
+        return "basket";
+   }
 
     /*
      * Default exception handler, catches all exceptions, redirects to friendly
