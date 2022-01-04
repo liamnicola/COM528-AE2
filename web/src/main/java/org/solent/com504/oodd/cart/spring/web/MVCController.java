@@ -156,6 +156,25 @@ public class MVCController {
         return "checkout";
     }
     
+    @RequestMapping(value = {"/createItem"}, method = RequestMethod.GET)
+    public String createItem(
+            Model model,
+            HttpSession session) {
+        String message = "";
+        String errorMessage = "";
+        
+        model.addAttribute("selectedPage", "createItem");
+        
+        LOG.debug("get create item page");
+        
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+        model.addAttribute("message", message);
+        model.addAttribute("errorMessage", errorMessage);
+        return "ModifyItem";
+    }
+    
     
     @RequestMapping(value = "/catalogue", method = {RequestMethod.GET, RequestMethod.POST})
     public String catalogList(Model model, HttpSession session) {

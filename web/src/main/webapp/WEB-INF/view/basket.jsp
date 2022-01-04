@@ -24,7 +24,7 @@
             <th>Quantity</th>
         </tr>
         
-        <c:forEach var="item" items="${availableItems}">
+        <c:forEach var="item" items="${shoppingCartItems}">
 
             <tr>
                 <td>${item.name}</td>
@@ -35,7 +35,7 @@
                     <form action="./home" method="post">
                         <input type="hidden" name="itemName" value="${item.name}">
                         <input type="hidden" name="itemId" value="${item.id}"
-                        <input type="hidden" name="action" value="removeItemFromBasket">
+                        <input type="hidden" name="action" value="removeItemFromCart">
                         <button type="submit" >Remove</button>
                     </form> 
                 </td>
@@ -43,7 +43,7 @@
         </c:forEach>
         <tr>
             <td>Total</td>
-            <td>£${shoppingbasketTotal}</td>
+            <td>£${shoppingcartTotal}</td>
         </tr>
     </table>
 <button type="button" onclick="window.location.href='checkout'">Checkout</button>
