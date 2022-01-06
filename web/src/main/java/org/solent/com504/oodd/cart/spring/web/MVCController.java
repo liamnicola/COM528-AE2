@@ -55,7 +55,7 @@ public class MVCController {
     }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
-    public String viewCart(@RequestParam(name = "action", required = false) String action,
+    public String viewHome(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "itemName", required = false) String itemName,
             @RequestParam(name = "itemUUID", required = false) String itemUuid,
             Model model,
@@ -156,10 +156,23 @@ public class MVCController {
         return "checkout";
     }
     
-    @RequestMapping(value = {"/createItem"}, method = RequestMethod.GET)
-    public String createItem(
+        @RequestMapping(value = "/viewModifyItem", method = {RequestMethod.POST})
+    public String udpateItem(
+            @RequestParam(value = "name", required = true) String newName, 
+   	    @RequestParam(value = "price", required = false) String inputPrice,
+            @RequestParam(value = "quantity", required = false) String inputQuantity,             
             Model model,
             HttpSession session) {
+            User sessionUser = getSessionUser(session);
+            model.addAttribute("sessionUser", sessionUser);
+        
+        // used to set tab selected
+        model.addAttribute("selectedPage", "viewModifyItem");
+        return "catalog";
+    }
+    
+    @RequestMapping(value = {"/createItem"}, method = RequestMethod.GET)
+    public String createItem(Model model,HttpSession session) {
         String message = "";
         String errorMessage = "";
         
@@ -172,11 +185,12 @@ public class MVCController {
         
         model.addAttribute("message", message);
         model.addAttribute("errorMessage", errorMessage);
-        return "ModifyItem";
+        return "ViewModifyItem";
     }
     
     
-    @RequestMapping(value = "/catalogue", method = {RequestMethod.GET, RequestMethod.POST})
+    
+    @RequestMapping(value = "/catalog", method = {RequestMethod.GET, RequestMethod.POST})
     public String catalogList(Model model, HttpSession session) {
 
         User sessionUser = getSessionUser(session);
@@ -192,33 +206,43 @@ public class MVCController {
         model.addAttribute("availableItems", availableItems);
         
         model.addAttribute("selectedPage", "admin");
-        return "catalogue";
+        return "catalog";
     }
     
     @RequestMapping(value = "/basket", method ={RequestMethod.GET, RequestMethod.POST})
-    public String viewBasket(@RequestParam(name = "action", required = false) String action,
+    public String viewBasket(
+        @RequestParam(name = "action", required = false) String action,
         @RequestParam(name = "item.name", required = false) String itemName,
         @RequestParam(name= "item.uuid", required = false) String itemUuid, 
         Model model,
         HttpSession session
     ) {
         
-        User user = getSessionUser(session);
-        model.addAttribute("user", user);
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionYser", sessionUser);
         
         model.addAttribute("selectedPage", "basket");
         
         String message = "";
         String errorMessage = "";
         
+            if ("removeItemFromCart".equals(action)) {
+            message = "removed " + itemName + " from cart";
+            shoppingCart.removeItemFromCart(itemUuid);
+            }
+             else {
+            message = "unknown action=" + action;
+        }
+
+   
+        
         List<ShoppingItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
         Double shoppingcartTotal = shoppingCart.getTotal();
-        
         model.addAttribute("shoppingCartItems", shoppingCartItems);
-        model.addAttribute("shoppingCartTotal", shoppingcartTotal);
-        return "basket";
-   }
+        model.addAttribute("shoppingcartTotal", shoppingcartTotal);
 
+        
+        return "basket";}
     /*
      * Default exception handler, catches all exceptions, redirects to friendly
      * error page. Does not catch request mapping errors

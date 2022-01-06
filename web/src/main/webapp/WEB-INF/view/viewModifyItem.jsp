@@ -1,5 +1,5 @@
 <%-- 
-    Document   : viewModifyItems
+    Document   : viewModifyItem
     Created on : 3 Jan 2022, 23:55:13
     Author     : liamn
 --%>
@@ -14,7 +14,7 @@
     <div>
         <h1>Modify Item</h1>
         
-        <form action=".viewModifyItems" method="POST", enctype="multipart/form-data">
+        <form action=".viewModifyItem" method="POST", enctype="multipart/form-data">
             <table class="table">
                 <tr>
                     <td>Name</td>

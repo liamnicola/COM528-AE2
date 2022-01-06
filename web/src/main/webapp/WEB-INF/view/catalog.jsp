@@ -1,5 +1,5 @@
 <%-- 
-    Document   : catalogue
+    Document   : catalog
     Created on : 3 Jan 2022, 22:43:14
     Author     : liamn
 --%>
@@ -17,18 +17,18 @@
         <h1>Catalogue</h1>
         <table class="table">
             <tr>
-                <th scope ="Id"></th>
-                <th scope ="Name"></th>
-                <th scope ="Price"></th>
+                <th scope ="Id">ID</th>
+                <th scope ="Name">Name</th>
+                <th scope ="Price">Price</th>
             </tr>
         
             <c:forEach var="item" items="${catalogList}">
                 <tr>
-                    <td>${item.id}</td>
+                    <td>${item.uuid}</td>
                     <td>${item.name}</td>
                     <td>${item.price}</td>
                     <td>
-                        <form action="./viewModifyItems" method="GET">
+                        <form action="./viewModifyItem" method="GET">
                             <input type="hidden" name="itemUuid" value ="${item.uuid}">
                             <button class="btn" type="submit">Modify</button>
                         </form>

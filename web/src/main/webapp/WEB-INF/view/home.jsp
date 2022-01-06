@@ -23,7 +23,7 @@
         <tr>
             <th>Item Name</th>
             <th>Price</th>
-            <th></th>
+            <th>Quantity</th>
         </tr>
 
         <c:forEach var="item" items="${availableItems}">
@@ -31,7 +31,7 @@
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price}</td>
-                <td></td>
+                <td>${item.quantity}</td>
                 <td>
                     <!-- post avoids url encoded parameters -->
                     <form action="./home" method="get">
@@ -76,8 +76,5 @@
             <td>${shoppingcartTotal}</td>
         </tr>
     </table>
-
-
-
 </main>
 <jsp:include page="footer.jsp" />

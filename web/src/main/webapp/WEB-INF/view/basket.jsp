@@ -32,18 +32,18 @@
                 <td>${item.quantity}</td>
                 <td>
                     <!-- post avoids url encoded parameters -->
-                    <form action="./home" method="post">
+                    <form action="./basket" method="post">
+                        <input type="hidden" name="itemUUID" value="${item.uuid}">
                         <input type="hidden" name="itemName" value="${item.name}">
-                        <input type="hidden" name="itemId" value="${item.id}"
                         <input type="hidden" name="action" value="removeItemFromCart">
-                        <button type="submit" >Remove</button>
+                        <button type="submit" >Remove Item</button>
                     </form> 
                 </td>
             </tr>
         </c:forEach>
         <tr>
-            <td>Total</td>
-            <td>£${shoppingcartTotal}</td>
+            <td>TOTAL</td>
+            <td>${shoppingcartTotal}</td>
         </tr>
     </table>
 <button type="button" onclick="window.location.href='checkout'">Checkout</button>

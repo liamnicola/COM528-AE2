@@ -1,5 +1,5 @@
 <%-- 
-    Document   : viewModifyOrders
+    Document   : viewModifyOrder
     Created on : 4 Jan 2022, 20:18:41
     Author     : liamn
 --%>
@@ -15,7 +15,7 @@
     <div>
         <H1>Modify Order ${modifyOrder.id} </H1>
         
-        <form action="./viewModifyOrders" method="POST">
+        <form action="./viewModifyOrder" method="POST">
         <table class="table">
                 <tr>
                     <td>Order ID: </td>

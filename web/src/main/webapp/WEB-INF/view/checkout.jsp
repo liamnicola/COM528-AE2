@@ -12,7 +12,7 @@
     
     <H1>Checkout</H1>
     
-    <div class="col-xs-6 col-md-6">
+    <div>
         <form action="./checkout" method="POST"> 
             <p>Card Holder Name: <input type="text" name="cardname" required value="${user.firstName}"></p>   
             <p>Card Number: <input type="text" name="cardnumber" required value="${user.savedCard.cardnumber}"/>         
@@ -21,7 +21,7 @@
             <p>CVV:<input type="text" name="cardcvv" required></p>
             <c:if test="${sessionUser.userRole !='ANONYMOUS'}">
                 <div class="row">
-                        <div class="col-xs-6 col-md-4">
+                        <div>
                             <button class="btn btn-primary" type="submit">Purchase</button>
 
                         </div>
@@ -30,9 +30,11 @@
         </form>
         <c:if test="${sessionUser.userRole =='ANONYMOUS'}">
             <div class="row">
-                <form action="./checkout" method="GET"> 
+      
                     <div>
-                        <p style="color: red;">Please sign in to pay</p>
+                        <form method="GET" action="./login">
+                              <button type="submit" class="btn btn-danger">Please sign in to pay </button>
+                        </form>
                     </div>
                 </form>
             </div>
@@ -49,9 +51,9 @@
             <c:forEach var="orderItem" items="${shoppingCartItems}">
 
                 <tr>
-                    <td>${orderItem.item.name}</td>
-                    <td>${orderItem.item.price}</td>
-                    <td>${orderItem.quantity}</td>
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td>${quantity}</td>
                 </tr>
             </c:forEach>
                 <td>TOTAL</td>
