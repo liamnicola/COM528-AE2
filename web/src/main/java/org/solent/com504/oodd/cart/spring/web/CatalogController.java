@@ -71,7 +71,7 @@ public class CatalogController {
         User user = getSessionUser(session);
         model.addAttribute("user", user);
 
-        if("addNewItem".equals(action)) {
+        if("getNewItemByName".equals(action)) {
             if (name == null || name.trim().isEmpty()) {
                 errorMessage = "Item Name is required";
             } else {
@@ -80,7 +80,7 @@ public class CatalogController {
                 item.setName(name);
                 item.setPrice(price);
                 
-                item = shoppingService.addNewItem(item);
+                item = shoppingService.getNewItemByName(itemUuid);
                 message = "New item has been created" + item.getName();
                 }
                 catch(Exception ex) {
