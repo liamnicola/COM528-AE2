@@ -102,21 +102,30 @@ This project has been created and tested using the follwing requirements:
 ### User Tests
 | Test | Action | Expected Result | Outcome |
 |------|--------|---------| ----- |
-| 1 | User runs the application | Build complete and application runs without issue | ? |
-| 2 | User logs in | If account is valid, user is logged into account | ? |
-| 3 | User logs out | Returns user back to anonymous mode | ? |
-| 4 | User adds item from catalogue to basket | Items are added to basket | ? |
-| 5 | User presses order items | Redirected to payment page | ? |
+| 1 | User runs the application | Build complete and application runs without issue | Correct |
+| 2 | User logs in | If account is valid, user is logged into account | Correct |
+| 3 | User logs out | Returns user back to anonymous mode | Correct |
+| 4 | User adds item from catalogue to basket | Items are added to basket | Correct |
+| 5 | User selects checkout | Redirected to payment page | Correct |
 | 6 | User inputs valid payment details | Order is placed | ? |
 | 7 | User inputs invalid payment details | Error is displayed and order is placed | ? |
 | 8 | User inputs valid payment details, however does not have sufficient funds | Error and order not placed | ? |
+| 9 | Users can log out | Error and order not placed | Correct |
 
 ### Admin Tests
 | Test | Action | Expected Result | Outcome |
 |------|--------|---------| ----- |
-| 1 | Admin logs in | If valid details, admin is logged in | ? |
-| 2 | Admin deletes catalogue item | Item is removed from the catalogue | ? |
+| 1 | Admin logs in | If valid details, admin is logged in | Correct |
+| 2 | Admin deletes catalogue item | Item is removed from the catalogue | Incorrect |
 | 3 | Admin views order history | Order history and user details are provided | ? |
-| 4 | Admin views users basket | Basket contents can be viewed and modified | ? |
-| 5 | Admin logs out | Returns admin back to anonymous mode and redirects to home page | ? |
+| 4 | Admin views users basket | Basket contents can be viewed and modified | Correct |
+| 5 | Admin can modify users | Admin can change and update users details | Correct |
+| 6 | Admin logs out | Returns admin back to anonymous mode and redirects to home page | Correct |
 
+## Diagrams
+
+### Robustness diagram
+This diagram shows how the user will interact with the website through the interface and how the user and admin should be able to use the application to perform certain tasks. It also shows how certain inputs will be stored in different domains and also helped to serve as a guidance during the creation of this project.
+
+![COM528-AE2 Robustness drawio](https://user-images.githubusercontent.com/72071568/148480990-f732a8e9-e818-4cec-8dda-503c02517798.png)
+)
