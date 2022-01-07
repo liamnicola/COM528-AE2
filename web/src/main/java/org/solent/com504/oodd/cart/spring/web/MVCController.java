@@ -147,28 +147,41 @@ public class MVCController {
         return "orders";
     }
     
-    @RequestMapping(value = "/checkout", method = {RequestMethod.GET, RequestMethod.POST})
-    public String viewCheckout(Model model, HttpSession session) {
+@RequestMapping(value = "/checkout", method ={RequestMethod.GET, RequestMethod.POST})
+    public String viewCheckout(
+        @RequestParam(name = "action", required = false) String action,
+        @RequestParam(name = "item.name", required = false) String itemName,
+        @RequestParam(name= "item.uuid", required = false) String itemUuid, 
+        Model model,
+        HttpSession session
+    ) {
+        
         User sessionUser = getSessionUser(session);
         model.addAttribute("sessionUser", sessionUser);
+        model.addAttribute("selectedPage", "checkout");
         
-        model.addAttribute("selectedPage", "orders");
-        return "checkout";
-    }
+        String message = "";
+        String errorMessage = "";
+
+        List<ShoppingItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
+        Double shoppingcartTotal = shoppingCart.getTotal();
+        model.addAttribute("shoppingCartItems", shoppingCartItems);
+        model.addAttribute("shoppingcartTotal", shoppingcartTotal);
+
+        return "checkout";}
     
         @RequestMapping(value = "/viewModifyItem", method = {RequestMethod.POST})
-    public String udpateItem(
-            @RequestParam(value = "name", required = true) String newName, 
-   	    @RequestParam(value = "price", required = false) String inputPrice,
-            @RequestParam(value = "quantity", required = false) String inputQuantity,             
+        public String updateItem(
+            @RequestParam(value = "itemUuid", required = true) String itemID,          
             Model model,
             HttpSession session) {
             User sessionUser = getSessionUser(session);
             model.addAttribute("sessionUser", sessionUser);
         
-        // used to set tab selected
+        List<ShoppingItem> availableItems = shoppingService.getAvailableItems(); 
+        model.addAttribute("availableItems", availableItems);
         model.addAttribute("selectedPage", "viewModifyItem");
-        return "catalog";
+        return "viewModifyItem";
     }
     
     @RequestMapping(value = {"/createItem"}, method = RequestMethod.GET)
@@ -191,20 +204,15 @@ public class MVCController {
     
     
     @RequestMapping(value = "/catalog", method = {RequestMethod.GET, RequestMethod.POST})
-    public String catalogList(Model model, HttpSession session) {
+    public String catalogList(
+            Model model,
+            HttpSession session) {
 
         User sessionUser = getSessionUser(session);
         model.addAttribute("sessionUser", sessionUser);
-        
-     //   List<ShoppingItem> availableItems= new ArrayList();
-     //   ShoppingItem item = new ShoppingItem();
-     //   item.setName("item");
-     //   availableItems.add(item);
-     
-        List<ShoppingItem> availableItems = shoppingService.getAvailableItems();
+        List<ShoppingItem> availableItems = shoppingService.getAvailableItems();  
                 
-        model.addAttribute("availableItems", availableItems);
-        
+        model.addAttribute("avaliableItems", availableItems);
         model.addAttribute("selectedPage", "admin");
         return "catalog";
     }
@@ -219,18 +227,17 @@ public class MVCController {
     ) {
         
         User sessionUser = getSessionUser(session);
-        model.addAttribute("sessionYser", sessionUser);
+        model.addAttribute("sessionUser", sessionUser);
         
         model.addAttribute("selectedPage", "basket");
         
         String message = "";
         String errorMessage = "";
         
-            if ("removeItemFromCart".equals(action)) {
+        if ("removeItemFromCart".equals(action)) {
             message = "removed " + itemName + " from cart";
             shoppingCart.removeItemFromCart(itemUuid);
-            }
-             else {
+        } else {
             message = "unknown action=" + action;
         }
 
@@ -240,9 +247,19 @@ public class MVCController {
         Double shoppingcartTotal = shoppingCart.getTotal();
         model.addAttribute("shoppingCartItems", shoppingCartItems);
         model.addAttribute("shoppingcartTotal", shoppingcartTotal);
-
-        
         return "basket";}
+    
+        @RequestMapping(value = "/addItem", method = {RequestMethod.GET, RequestMethod.POST})
+        public String addItem(Model model, HttpSession session) {
+
+        // get sessionUser from session
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+        // used to set tab selected
+        model.addAttribute("selectedPage", "addItem");
+        return "addItem";
+        }
     /*
      * Default exception handler, catches all exceptions, redirects to friendly
      * error page. Does not catch request mapping errors

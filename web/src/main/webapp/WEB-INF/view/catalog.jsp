@@ -17,25 +17,27 @@
         <h1>Catalogue</h1>
         <table class="table">
             <tr>
-                <th scope ="Id">ID</th>
                 <th scope ="Name">Name</th>
                 <th scope ="Price">Price</th>
+                <th scope ="Price">Quantity</th>
             </tr>
         
-            <c:forEach var="item" items="${catalogList}">
+            <c:forEach var="item" items="${availableItems}">
                 <tr>
-                    <td>${item.uuid}</td>
                     <td>${item.name}</td>
                     <td>${item.price}</td>
-                    <td>
+                    <td>${item.quantity}
                         <form action="./viewModifyItem" method="GET">
-                            <input type="hidden" name="itemUuid" value ="${item.uuid}">
+                            <input type="hidden" name="itemUuid" value ="${item.name}">
                             <button class="btn" type="submit">Modify</button>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+        <form action="./addItem" method="GET">
+            <button class="btn" type="submit" >Add Item</button>
+        </form>
     </div>
 </main>
 <jsp:include page="footer.jsp" />

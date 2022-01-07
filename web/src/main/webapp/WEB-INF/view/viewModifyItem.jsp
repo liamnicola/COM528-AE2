@@ -18,19 +18,19 @@
             <table class="table">
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="name" value="${modifyItem.name}"/></td>
+                    <td><input type="text" name="name" value="${item.name}"/></td>
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td><input type="text" name="price" value="${modifyItem.price}"/></td>  
+                    <td><input type="text" name="price" value="${item.price}"/></td>  
                 </tr>
                 <tr>
                     <td>Quantity</td>
-                    <td><input type="text" name="quantity" value="${modifyItem.quantity}"/></td>  
+                    <td><input type="text" name="quantity" value="${item.quantity}"/></td>  
                 </tr>
             </table>
             
-            <c:if test="${sessionUser.userRole =='ADMINISTRATOR' && modifyItem == null}">
+            <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
                 <button class="btn" type="submit" >Add Item</button>
             </c:if>
         </form>         

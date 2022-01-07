@@ -42,23 +42,27 @@
     </div>
             <br>
         <div>
-            <table class="table">
-                <th>Item Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
+    <table class="table">
+        
+        <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        
+        <c:forEach var="item" items="${shoppingCartItems}">
 
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td>${item.quantity}</td>
 
-            <c:forEach var="orderItem" items="${shoppingCartItems}">
-
-                <tr>
-                    <td>${item.name}</td>
-                    <td>${item.price}</td>
-                    <td>${quantity}</td>
-                </tr>
-            </c:forEach>
-                <td>TOTAL</td>
-                <td>${shoppingcartTotal}</td>
-        </table>
-    </div>
+            </tr>
+        </c:forEach>
+        <tr>
+            <td>TOTAL</td>
+            <td>${shoppingcartTotal}</td>
+        </tr>
+    </table>
 </main>
 <jsp:include page="footer.jsp" />
