@@ -79,9 +79,11 @@ This project has been created and tested using the follwing requirements:
 | Use Case | Action | Response |
 |------|--------|---------|
 | 1 | Login as admin | access to admin features |
-| 2 | Admin has access to admin page | can redirect to admin without restrictions |
-| 3 | Admin can change catalogue | adds and removes items on the catalogues for all types of users |
-| 4 | Admin can see order history and baskets of users | Admins can have access and view all orders and baskets |
+| 2 | Admin opens admin page | can redirect to admin without restrictions |
+| 3 | Admin views all users | Admin will be able to view all user details regesitered  |
+| 4 | Admin modifies user | User details will be updated accordingly  |
+| 5 | Admin can change catalogue | adds and removes items on the catalogues for all types of users |
+| 6 | Admin can see order history and baskets of users | Admins can have access and view all orders and baskets |
 
 ### User
 | Use Case | Action | Response |
