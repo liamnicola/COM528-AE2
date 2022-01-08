@@ -5,13 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
+<jsp:include page="header.jsp" />
+<!-- Begin page content -->
+<main role="main" class="container">
+    <H1>Add Item</H1>
+</main>
+<form>
+    <p>Item Name:<input type="text" name="fName" required ></p>   
+    <p>Item Price: <input type="text" name="lName" required> </p>         
+    <p>Item Quantity<input type="text" name="email" required ></p>            
+</form>
+         <button type="submit">Send</button>
+
+<jsp:include page="footer.jsp" />
