@@ -18,6 +18,10 @@
    - [User](#user-tests)
    - [Admin](#admin-tests)
 
+6) [Diagrams](#diagrams)
+   - [Robustness Diagram](#robustness-diagram)
+   - [Wireframes](#wireframes)
+
 ## Running the app
 You can run the app using the stand alone spring boot maven plugin:
 
@@ -131,3 +135,31 @@ This diagram shows how the user will interact with the website through the inter
 
 ![COM528-AE2 Robustness drawio](https://user-images.githubusercontent.com/72071568/148480990-f732a8e9-e818-4cec-8dda-503c02517798.png)
 )
+
+### Wireframes
+I created designs on how each of the key pages of my application would look before I started creating this project. This gave me a template to follow: 
+
+Home page:
+
+![Home page drawio (3)](https://user-images.githubusercontent.com/72071568/148668172-72130443-7505-41ab-93ed-448e5d86660b.png)
+
+Shopping Basket
+
+![basket drawio](https://user-images.githubusercontent.com/72071568/148668188-9a08eec1-2c21-4916-9f33-2343bff0991a.png)
+
+Checkout
+
+![checkout drawio](https://user-images.githubusercontent.com/72071568/148668299-0efe4045-1c85-4990-a705-df7302c0b5c7.png)
+
+Manage Users
+
+![ManagerUsers drawio](https://user-images.githubusercontent.com/72071568/148668313-4ccc5d41-61d2-4efb-972a-a10ff9bd1d05.png)
+
+Manage Catalogue
+
+![Managecatalog drawio](https://user-images.githubusercontent.com/72071568/148668316-4ee6dc36-c7b9-498e-9207-ce277dffb81e.png)
+
+Contact
+
+![Contact drawio (1)](https://user-images.githubusercontent.com/72071568/148668322-e3a745be-bbc3-42e5-9191-877400b6c514.png)
+
