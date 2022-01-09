@@ -20,6 +20,8 @@
 
 6) [Diagrams](#diagrams)
    - [Robustness Diagram](#robustness-diagram)
+   - [UML Class Diagram](#uml-class-diagram)
+   - [Sequence Diagram](#sequence-diagram)
    - [Wireframes](#wireframes)
 
 ## Running the app
@@ -130,11 +132,22 @@ This project has been created and tested using the follwing requirements:
 
 ## Diagrams
 
-### Robustness diagram
+### Robustness Diagram
 This diagram shows how the user will interact with the website through the interface and how the user and admin should be able to use the application to perform certain tasks. It also shows how certain inputs will be stored in different domains and also helped to serve as a guidance during the creation of this project.
 
 ![COM528-AE2 Robustness drawio](https://user-images.githubusercontent.com/72071568/148480990-f732a8e9-e818-4cec-8dda-503c02517798.png)
 )
+
+### UML Class Diagram
+The class diagram shows the relationships of the key objects in the application. It shows different classes related to one another and shows all the methods and variables used from each object. I created this diagram to focus on the main classes and objects used throughout the application:
+
+![UML Class drawio](https://user-images.githubusercontent.com/72071568/148668807-4208b230-f98b-40d4-9b29-2e4c836ec03c.png)
+
+### Sequence Diagram
+This diagram shows how different objects interact by sending various different messages. This shows how different objects create the structure of the application by sending different information to and from objects:
+
+![UML Sequence Diagram drawio](https://user-images.githubusercontent.com/72071568/148668777-52691ccb-21e7-4316-be3c-493c82f7b748.png)
+
 
 ### Wireframes
 I created designs on how each of the key pages of my application would look before I started creating this project. This gave me a template to follow: 
