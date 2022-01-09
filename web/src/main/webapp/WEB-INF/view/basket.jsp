@@ -32,7 +32,7 @@
                 <td>${item.quantity}</td>
                 <td>
                     <!-- post avoids url encoded parameters -->
-                    <form action="./basket" method="post">
+                    <form action="./home" method="post">
                         <input type="hidden" name="itemUUID" value="${item.uuid}">
                         <input type="hidden" name="itemName" value="${item.name}">
                         <input type="hidden" name="action" value="removeItemFromCart">

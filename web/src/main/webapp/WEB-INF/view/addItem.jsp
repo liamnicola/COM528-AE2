@@ -16,6 +16,6 @@
     <p>Item Price: <input type="text" name="lName" required> </p>         
     <p>Item Quantity<input type="text" name="email" required ></p>            
 </form>
-         <button type="submit">Send</button>
+         <button type="submit">Add Item</button>
 
 <jsp:include page="footer.jsp" />

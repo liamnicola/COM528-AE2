@@ -39,6 +39,7 @@ public class MVCController {
 
     private User getSessionUser(HttpSession session) {
         User sessionUser = (User) session.getAttribute("sessionUser");
+        LOG.debug("got the session user");
         if (sessionUser == null) {
             sessionUser = new User();
             sessionUser.setUsername("anonymous");
@@ -181,7 +182,7 @@ public class MVCController {
         List<ShoppingItem> availableItems = shoppingService.getAvailableItems(); 
         model.addAttribute("availableItems", availableItems);
         model.addAttribute("selectedPage", "viewModifyItem");
-        return "viewModifyItem";
+        return "/catalog";
     }
     
     @RequestMapping(value = {"/createItem"}, method = RequestMethod.GET)
@@ -211,8 +212,14 @@ public class MVCController {
         User sessionUser = getSessionUser(session);
         model.addAttribute("sessionUser", sessionUser);
         List<ShoppingItem> availableItems = shoppingService.getAvailableItems();  
-                
-        model.addAttribute("avaliableItems", availableItems);
+        List<ShoppingItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
+        
+        Double shoppingcartTotal = shoppingCart.getTotal();
+
+        // populate model with values
+        model.addAttribute("availableItems", availableItems);
+        model.addAttribute("shoppingCartItems", shoppingCartItems);
+        model.addAttribute("shoppingcartTotal", shoppingcartTotal);
         model.addAttribute("selectedPage", "admin");
         return "catalog";
     }
@@ -255,8 +262,8 @@ public class MVCController {
         // get sessionUser from session
         User sessionUser = getSessionUser(session);
         model.addAttribute("sessionUser", sessionUser);
-        
-        // used to set tab selected
+
+
         model.addAttribute("selectedPage", "addItem");
         return "addItem";
         }

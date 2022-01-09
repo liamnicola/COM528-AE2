@@ -23,7 +23,6 @@
         <tr>
             <th>Item Name</th>
             <th>Price</th>
-            <th>Quantity</th>
         </tr>
 
         <c:forEach var="item" items="${availableItems}">
@@ -31,7 +30,6 @@
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price}</td>
-                <td>${item.quantity}</td>
                 <td>
                     <!-- post avoids url encoded parameters -->
                     <form action="./home" method="get">
